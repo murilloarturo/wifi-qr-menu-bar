@@ -25,6 +25,16 @@ struct PasswordPanel: View {
         case .loading:
             ProgressView()
                 .controlSize(.small)
+        case .needsLocation:
+            Image(systemName: "location.slash")
+                .font(.largeTitle)
+                .foregroundStyle(.secondary)
+            Text("macOS only shares the Wi-Fi network's name with apps that have location access.")
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+            Button("Open Location Settings", action: model.openLocationSettings)
+                .buttonStyle(.borderedProminent)
+                .keyboardShortcut(.defaultAction)
         case .shown(let network, let qrCode):
             Image(qrCode, scale: 1, label: Text("QR code to join \(network.ssid)"))
                 .resizable()

@@ -6,7 +6,7 @@ Shows the password of the Wi-Fi network your Mac is on as a QR code, right from 
 
 Click the QR icon in the menu bar, then **Show Password**. The first time, macOS asks for two things:
 
-1. **Location access.** macOS only tells apps the name of the Wi-Fi network if they have location access.
+1. **Location access.** macOS only tells apps the name of the Wi-Fi network if they have location access. If Location Services is off, or WiFi QR was turned down, **Open Location Settings** takes you to the right page and shows which switch to turn on. WiFi QR carries on by itself once it's on.
 2. **An administrator's password.** Wi-Fi passwords are kept in the System keychain. Choose **Always Allow** to skip this step next time. macOS asks again after you rebuild the app.
 
 Closing the panel hides the password again.

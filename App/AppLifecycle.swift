@@ -22,7 +22,8 @@ final class AppLifecycle: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         popover.contentViewController = host
         popover.behavior = .applicationDefined
         popover.delegate = self
-        model.onResult = { [weak self] in self?.showPopover() }
+        model.onShowPanel = { [weak self] in self?.showPopover() }
+        model.onHidePanel = { [weak self] in self?.popover.performClose(nil) }
     }
 
     @objc private func togglePopover() {

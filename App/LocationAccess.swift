@@ -11,9 +11,17 @@ final class LocationAccess: NSObject, CLLocationManagerDelegate {
         manager.delegate = self
     }
 
+    var status: CLAuthorizationStatus { manager.authorizationStatus }
+
+    /// The switch for the whole Mac. CoreLocation asks for this check to stay off the main thread.
+    @concurrent
+    nonisolated static func servicesEnabled() async -> Bool {
+        CLLocationManager.locationServicesEnabled()
+    }
+
     func requestAccess() async -> Bool {
-        guard manager.authorizationStatus == .notDetermined else {
-            return manager.authorizationStatus == .authorizedAlways
+        guard status == .notDetermined else {
+            return status == .authorizedAlways
         }
         return await withCheckedContinuation { continuation in
             pending = continuation

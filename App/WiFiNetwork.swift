@@ -86,7 +86,6 @@ private extension WiFiNetwork.Security {
 }
 
 enum WiFiError: LocalizedError {
-    case locationDenied
     case notConnected
     case enterprise
     case noSavedPassword(String)
@@ -96,8 +95,6 @@ enum WiFiError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .locationDenied:
-            "macOS only shares the Wi-Fi network's name with apps that have location access. Turn on WiFi QR in System Settings › Privacy & Security › Location Services."
         case .notConnected:
             "This Mac isn't connected to Wi-Fi."
         case .enterprise:
